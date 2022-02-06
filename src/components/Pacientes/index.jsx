@@ -1,5 +1,4 @@
-import styles from "./styles.module.scss";
-
+import "./styles.scss";
 const Pacientes = () => {
   return (
     <>

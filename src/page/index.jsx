@@ -5,9 +5,11 @@ import Pacientes from "../components/Pacientes";
 const App = () => {
   return (
     <>
-      <Header />
-      <Formulario />
-      <Pacientes />
+      <div className="container">
+        <Header />
+        <Formulario />
+        <Pacientes />
+      </div>
     </>
   );
 };

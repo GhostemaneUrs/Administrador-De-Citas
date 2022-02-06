@@ -1,8 +1,8 @@
-import styles from "./styles.module.scss";
+import "./styles.scss";
 const Header = () => {
   return (
     <>
-      <div className={styles.header}>
+      <div>
         <h1>dime</h1>
       </div>
     </>
