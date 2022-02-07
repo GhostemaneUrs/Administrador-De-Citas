@@ -1,14 +1,16 @@
 import Header from "../components/Header";
 import Formulario from "../components/Formulario";
-import Pacientes from "../components/Pacientes";
+import Pacientes from "../components/Pacientes/index";
 
 const App = () => {
   return (
     <>
-      <div className="container">
+      <div className="container mx-auto mt-5">
         <Header />
-        <Formulario />
-        <Pacientes />
+        <div className="mt-10 md:flex justify-center">
+          <Formulario />
+          <Pacientes />
+        </div>
       </div>
     </>
   );
