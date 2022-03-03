@@ -1,4 +1,4 @@
-const paciente = ({ patient }) => {
+const paciente = ({ patient, setEditPatient, deletePatient }) => {
   return (
     <>
       <div className="mb-3 mx-5 bg-white shadow-md px-5 py-5 rounded-xl">
@@ -29,12 +29,14 @@ const paciente = ({ patient }) => {
         <div className="flex items-center justify-between mt-5">
           <button
             type="button"
+            onClick={() => setEditPatient(patient)}
             className="py-2 px-5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold uppercase rounded-lg transition-all"
           >
             editar
           </button>
           <button
             type="button"
+            onClick={() => deletePatient(patient?.id)}
             className="py-2 px-5 bg-red-600 hover:bg-red-700 text-white font-bold uppercase rounded-lg transition-all"
           >
             eliminar

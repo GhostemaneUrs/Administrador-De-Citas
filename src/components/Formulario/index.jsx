@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import { v4 as uuidv4 } from "uuid";
-const Formulario = ({ patients, setPatients }) => {
+const Formulario = ({ patients, setPatients, editPatient, setEditPatient }) => {
   const uniqueId = uuidv4();
   const [patient, setPatient] = useState({
-    id: uniqueId,
+    id: "",
     pet: "",
     owner: "",
     phone: "",
@@ -12,6 +12,12 @@ const Formulario = ({ patients, setPatients }) => {
     date: "",
     symptom: "",
   });
+
+  useEffect(() => {
+    if (editPatient.id) {
+      setPatient(editPatient);
+    }
+  }, [editPatient]);
 
   const resetForm = () => {
     setPatient({
@@ -26,8 +32,8 @@ const Formulario = ({ patients, setPatients }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    /* Validate form */
 
+    /* Validate form */
     if (
       patient.pet === "" ||
       patient.owner === "" ||
@@ -42,6 +48,20 @@ const Formulario = ({ patients, setPatients }) => {
         confirmButtonText: "Ok",
         text: "All fields are required!",
       });
+    }
+    if (editPatient.id) {
+      resetForm();
+      Swal.fire({
+        icon: "success",
+        timer: 1500,
+        text: "Patient edited successfully!",
+      });
+      patient.id = editPatient.id;
+      const updatePatient = patients.map((updatePatient) =>
+        updatePatient.id === patient.id ? patient : updatePatient
+      );
+      setPatients(updatePatient);
+      setEditPatient({});
     } else {
       resetForm();
       Swal.fire({
@@ -49,6 +69,7 @@ const Formulario = ({ patients, setPatients }) => {
         timer: 1500,
         text: "Patient added successfully!",
       });
+      patient.id = uniqueId;
       setPatients([...patients, patient]);
     }
   };
@@ -173,7 +194,7 @@ const Formulario = ({ patients, setPatients }) => {
           <input
             type="submit"
             className="bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-700 cursor-pointer transition-all"
-            value="Agregar Paciente"
+            value={editPatient.id ? "Editar Paciente" : "Añadir Paciente"}
           />
         </form>
       </div>
