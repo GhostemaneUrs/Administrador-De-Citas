@@ -1,9 +1,12 @@
-import styles from "./styles.module.scss";
+import "./styles.scss";
 const Header = () => {
   return (
     <>
-      <div className={styles.header}>
-        <h1>dime</h1>
+      <div>
+        <h1 className="font-black text-5xl text-center md:w-2/3 mx-auto">
+          Seguimiento Pacientes {""}
+          <span className="text-indigo-600">Veterinaria</span>
+        </h1>
       </div>
     </>
   );
