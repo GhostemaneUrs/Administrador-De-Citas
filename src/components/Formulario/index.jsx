@@ -131,7 +131,7 @@ const Formulario = ({ patients, setPatients, editPatient, setEditPatient }) => {
               Numero de Teléfono
             </label>
             <input
-              id="propietario"
+              id="´phone"
               type="text"
               className="border-2 w-full p-2 mt-2 placeholder:placeholder-gray-400 rounded-md"
               placeholder="Numero de Teléfono"
